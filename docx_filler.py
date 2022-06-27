@@ -23,7 +23,7 @@ class docx_form:
     def doc_fill(self):
         paragraph = self.document.add_paragraph(text_fill.title)
         paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-        self.font = 'bold'
+        self.font.bold = True
         paragraph.style = self.style
         self.document.save('ТЗ.docx')
 
