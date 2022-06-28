@@ -7,6 +7,7 @@ from docx.enum.style import WD_STYLE_TYPE
 class DocxForm:
 
     def __init__(self):
+        self.row_count_tz = 0
         self.document = Document()
         section = self.document.sections[-1]
         new_width, new_height = section.page_height, section.page_width
@@ -65,22 +66,6 @@ class DocxForm:
         )
         self.paragraph_2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
 
-        self.table_2 = self.document.add_table(rows=1, cols=5, style='Table Grid')
-        self.table_2.allow_autofit = False
-        hdr_cells_2 = self.table_2.rows[0].cells
-        widths_2 = [Inches(0.3), Inches(6), Inches(4), Inches(4), Inches(2)]
-        for j in range(5):
-            hdr_cells_2[j].width = widths_2[j]
-
-        for i, item in enumerate([text_fill.table_2_1, text_fill.table_2_2, text_fill.table_2_3, text_fill.table_2_4, text_fill.table_2_5]):
-            p = hdr_cells_2[i].paragraphs[0]
-            p.add_run(item, style = 'Body Text Char').font.size = Pt(12)
-            p.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-
-        paragraph_3 = self.document.add_paragraph(
-            text_fill.third_par, style='List Number'
-        )
-        paragraph_3.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
 
     def common_fill(self, name_ktru, okpd, ktru, measure, quantity):
         row_count = len(self.table_1.rows)
@@ -93,37 +78,68 @@ class DocxForm:
         row_cells[4].text = quantity
 
     def tz_fill(self, name_ktru, nkmi_description, lack_of_description=None, **tz):
-        row_count = len(self.table_2.rows)
-        self.paragraph_2.add_run('\t', style='Body Text Char')
-        self.paragraph_2.add_run('\n', style='Body Text Char')
-        self.paragraph_2.add_run('\n', style='Body Text Char')
+        self.row_count_tz+=1
+        par = self.document.add_paragraph('', style='Normal')
+        par.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+        par.add_run('\t', style='Body Text Char')
+
 
         if lack_of_description == 'not':
-            self.paragraph_2.add_run(text_fill.if_tz_empty, style='Body Text Char')
-            self.paragraph_2.add_run('\n', style='Body Text Char')
+            par.add_run(text_fill.if_tz_empty, style='Body Text Char')
+            par.add_run('\n', style='Body Text Char')
+
         elif lack_of_description == 'not_enough':
-            self.paragraph_2.add_run(text_fill.if_tz_not_enough, style='Body Text Char')
-            self.paragraph_2.add_run('\n', style='Body Text Char')
+            par.add_run(text_fill.if_tz_not_enough, style='Body Text Char')
+            par.add_run('\n', style='Body Text Char')
 
-        self.paragraph_2.add_run('\n', style='Body Text Char')
-        self.paragraph_2.add_run(f'2.{row_count} ', style='Body Text Char')
-        self.paragraph_2.add_run('Описание по НКМИ: ', style='Body Text Char')
-        self.paragraph_2.add_run(nkmi_description, style='Body Text Char')
+        par.add_run('\n', style='Body Text Char')
+        par.add_run(f'2.{self.row_count_tz} ', style='Body Text Char')
+        par.add_run('Описание по НКМИ: ', style='Body Text Char')
+        par.add_run(nkmi_description, style='Body Text Char')
 
-        row_cells = self.table_2.add_row().cells
+        self.document.add_paragraph('', style='Normal').alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+
+        table_2 = self.document.add_table(rows=1, cols=5, style='Table Grid')
+        # self.move_table_after(table_2, self.paragraph_2)
+        table_2.allow_autofit = False
+        hdr_cells_2 = table_2.rows[0].cells
+        widths_2 = [Inches(0.3), Inches(6), Inches(4), Inches(4), Inches(2)]
+        for j in range(5):
+            hdr_cells_2[j].width = widths_2[j]
+
+        for i, item in enumerate([text_fill.table_2_1, text_fill.table_2_2, text_fill.table_2_3, text_fill.table_2_4, text_fill.table_2_5]):
+            p = hdr_cells_2[i].paragraphs[0]
+            p.add_run(item, style = 'Body Text Char').font.size = Pt(12)
+            p.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+
+        row_count=len(table_2.rows)
+
+        row_cells = table_2.add_row().cells
         row_cells[0].style = 'Normal'
         row_cells[0].text = f'{row_count}.'
         row_cells[1].text = name_ktru
 
+
         for i in tz.items():
-            row_count = len(self.table_2.rows)
-            row_cells = self.table_2.add_row().cells
+            row_count = len(table_2.rows)
+            row_cells = table_2.add_row().cells
             row_cells[0].text = f'{row_count}.'
             row_cells[1].text = i[0]
             row_cells[3].text = i[1]
             row_cells[4].text = 'КТРУ'
 
+
+
     def doc_save(self):
+        paragraph_3 = self.document.add_paragraph(
+            text_fill.third_par, style='List Number'
+        )
+        paragraph_3.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
         self.document.save('ТЗ.docx')
+
+    def move_table_after(self, table, paragraph):
+        tbl, p = table._tbl, paragraph._p
+        p.addnext(tbl)
 
 # d = DocxForm()
