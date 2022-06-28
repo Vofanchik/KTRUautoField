@@ -3,3 +3,4 @@ pyqt5-tools
 requests
 bs4
 docx
+python-docx
