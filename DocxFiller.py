@@ -84,11 +84,11 @@ class DocxForm:
         par.add_run('\t', style='Body Text Char')
 
 
-        if lack_of_description == 'not':
+        if lack_of_description == 1:
             par.add_run(text_fill.if_tz_empty, style='Body Text Char')
             par.add_run('\n', style='Body Text Char')
 
-        elif lack_of_description == 'not_enough':
+        elif lack_of_description == 2:
             par.add_run(text_fill.if_tz_not_enough, style='Body Text Char')
             par.add_run('\n', style='Body Text Char')
 
