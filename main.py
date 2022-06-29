@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import QMessageBox
 
 from inface import Ui_MainWindow
@@ -13,35 +13,64 @@ class mywindow(QtWidgets.QMainWindow):
         self.r = EISparse.ParseKTRU()
         self.d = DocxFiller.DocxForm()
         self.ui = Ui_MainWindow()
+        self.setWindowIcon(QtGui.QIcon('icon.ico'))
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.search_ktru)
         self.ui.pushButton_2.clicked.connect(self.add_position)
         self.ui.pushButton_3.clicked.connect(self.save_docx)
-
+        self.ui.comboBox_3.activated[str].connect(self.onChanged_combobox3)
+        self.ui.comboBox_2.activated[str].connect(self.onChanged_combobox2)
     def search_ktru(self):
         self.ktru = self.ui.lineEdit.text()
 
         try:
             self.id_ktru = self.r.get_response(self.ktru)
             self.info = self.r.get_common_info(self.id_ktru)
-            self.ui.lineEdit_2.setText(self.info['name'])
+            self.ui.textEdit_4.setPlainText(self.info['name'])
             self.ui.lineEdit_3.setText(self.info['measure'])
+
+            for i in list(self.info['nkmi'].items()):
+                self.ui.comboBox_3.addItem(i[0])
+
+            for i in list(self.info['okpd'].items()):
+                self.ui.comboBox_2.addItem(i[0])
+
+            self.ui.textEdit_2.setPlainText(self.info['nkmi'][f'{self.ui.comboBox_3.currentText()}'][1])
+            self.ui.textEdit.setPlainText(self.info['okpd'][f'{self.ui.comboBox_2.currentText()}'])
+            self.ui.textEdit_3.setPlainText(self.info['nkmi'][f'{self.ui.comboBox_3.currentText()}'][0])
+            QMessageBox.information(self, "Готово",
+                                 "Поиск завершен, теперь уточните подходящий ОКПД, НКМИ и количество", QMessageBox.Ok)
         except:
-            QMessageBox.critical(self, "Ошибка ", "Введите корректную позицию ктру", QMessageBox.Ok)
-
-
+            QMessageBox.critical(self, "Ошибка поиска", "Введите корректную позицию ктру или проверьте интернет соединение", QMessageBox.Ok)
 
     def add_position(self):
-        self.tz = self.r.get_tz_ktru(self.id_ktru)
-        if self.tz == None:
-            self.tz = {}
-        quantity = self.ui.lineEdit_4.text()
-        lack_of_description = self.ui.comboBox.currentIndex()
-        self.d.common_fill(self.info['name'], list(self.info['okpd'].keys())[0], self.ktru, self.info['measure'], quantity)
-        self.d.tz_fill(self.info['name'], list(self.info['nkmi'].values())[0][1],lack_of_description,  **self.tz)
+        try:
+            self.tz = self.r.get_tz_ktru(self.id_ktru)
+            if self.tz == None:
+                self.tz = {}
+            quantity = self.ui.lineEdit_4.text()
+            lack_of_description = self.ui.comboBox.currentIndex()
+            self.d.common_fill(self.info['name'], self.ui.comboBox_2.currentText(), self.ktru, self.ui.comboBox_3.currentText(), self.info['measure'], quantity)
+            self.d.tz_fill(self.info['name'], self.ui.textEdit_2.toPlainText(), lack_of_description,  **self.tz)
+            QMessageBox.information(self, "Готово",
+                                    f"Добавлена позиция {self.info['name']} в количестве {quantity} едениц измерения - {self.info['measure']}",
+                                    QMessageBox.Ok)
+        except:
+            QMessageBox.critical(self, "Ошибка добавления", "Попробуйте другую позицию КТРУ", QMessageBox.Ok)
 
     def save_docx(self):
-        self.d.doc_save()
+        try:
+            self.d.doc_save()
+            QMessageBox.information(self, "Готово",
+                                 "Документ сохранен в текущей директории", QMessageBox.Ok)
+        except:
+            QMessageBox.critical(self, "Ошибка сохранения", "Проверьте, не открыт ли фаил с названием ТЗ.docx в текущей директории", QMessageBox.Ok)
+    def onChanged_combobox3(self):
+        self.ui.textEdit_2.setPlainText(self.info['nkmi'][f'{self.ui.comboBox_3.currentText()}'][1])
+        self.ui.textEdit_3.setPlainText(self.info['nkmi'][f'{self.ui.comboBox_3.currentText()}'][0])
+
+    def onChanged_combobox2(self):
+        self.ui.textEdit.setPlainText(self.info['okpd'][f'{self.ui.comboBox_2.currentText()}'])
 
 
 app = QtWidgets.QApplication([])

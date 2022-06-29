@@ -67,13 +67,13 @@ class DocxForm:
         self.paragraph_2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
 
 
-    def common_fill(self, name_ktru, okpd, ktru, measure, quantity):
+    def common_fill(self, name_ktru, okpd, ktru, nkmi, measure, quantity):
         row_count = len(self.table_1.rows)
         row_cells = self.table_1.add_row().cells
         row_cells[0].style = 'Normal'
         row_cells[0].text = f'{row_count}.'
         row_cells[1].text = name_ktru
-        row_cells[2].text = f'{okpd} / {ktru}'
+        row_cells[2].text = f'{okpd} / {ktru} / {nkmi}'
         row_cells[3].text = measure
         row_cells[4].text = quantity
 
@@ -126,20 +126,26 @@ class DocxForm:
             row_cells = table_2.add_row().cells
             row_cells[0].text = f'{row_count}.'
             row_cells[1].text = i[0]
-            row_cells[3].text = i[1]
+            row_cells[3].text = list(map(lambda x: x+' / ' if x!= i[1][-1] else x, i[1]))
             row_cells[4].text = 'КТРУ'
 
-
-
     def doc_save(self):
-        paragraph_3 = self.document.add_paragraph(
-            text_fill.third_par, style='List Number'
-        )
-        paragraph_3.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
-        self.document.save('ТЗ.docx')
+        try:
+            self.document.save('ТЗ.docx')
+            self.requirement_fill()
+            self.document.save('ТЗ.docx')
+        except:
+            raise PermissionError
 
     def move_table_after(self, table, paragraph):
         tbl, p = table._tbl, paragraph._p
         p.addnext(tbl)
+
+
+    def requirement_fill(self):
+        paragraph_3 = self.document.add_paragraph(
+            text_fill.third_par, style='List Number'
+        )
+        paragraph_3.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
 
 # d = DocxForm()
