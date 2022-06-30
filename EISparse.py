@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+from pprint import pprint
 
 
 class ParseKTRU:
@@ -115,9 +116,9 @@ class ParseKTRU:
 
 
 # r = ParseKTRU()
-# # id_ktru = r.get_response('32.50.13.110-00004585')
-# id_ktru = r.get_response('32.50.13.190-00007224')
-# # # id_ktru = r.get_response('32.50.30.110-00000142')
-# #
-# #
+# id_ktru = r.get_response('32.50.13.190-00007060')
+# # id_ktru = r.get_response('32.50.13.190-00007224')
+# # # # id_ktru = r.get_response('32.50.30.110-00000142')
+# # #
+# # #
 # pprint(r.get_common_info(id_ktru))

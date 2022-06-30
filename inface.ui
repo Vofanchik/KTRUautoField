@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1102</width>
-    <height>493</height>
+    <width>932</width>
+    <height>789</height>
    </rect>
   </property>
   <property name="font">
@@ -24,8 +24,8 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
-      <width>621</width>
+      <y>20</y>
+      <width>461</width>
       <height>51</height>
      </rect>
     </property>
@@ -47,7 +47,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
+      <y>90</y>
       <width>141</width>
       <height>51</height>
      </rect>
@@ -68,7 +68,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>260</y>
+      <y>270</y>
       <width>141</width>
       <height>51</height>
      </rect>
@@ -89,7 +89,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>360</y>
+      <y>370</y>
       <width>141</width>
       <height>51</height>
      </rect>
@@ -113,8 +113,8 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>260</y>
-      <width>461</width>
+      <y>270</y>
+      <width>301</width>
       <height>51</height>
      </rect>
     </property>
@@ -130,8 +130,8 @@
    <widget class="QLineEdit" name="lineEdit_4">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>260</y>
+      <x>480</x>
+      <y>270</y>
       <width>101</width>
       <height>51</height>
      </rect>
@@ -154,8 +154,8 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>360</y>
-      <width>461</width>
+      <y>370</y>
+      <width>301</width>
       <height>51</height>
      </rect>
     </property>
@@ -186,8 +186,8 @@
    <widget class="QComboBox" name="comboBox_2">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>80</y>
+      <x>480</x>
+      <y>90</y>
       <width>191</width>
       <height>51</height>
      </rect>
@@ -204,8 +204,8 @@
    <widget class="QComboBox" name="comboBox_3">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>360</y>
+      <x>480</x>
+      <y>370</y>
       <width>191</width>
       <height>51</height>
      </rect>
@@ -222,8 +222,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>20</y>
+      <x>490</x>
+      <y>30</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -241,8 +241,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>310</y>
+      <x>490</x>
+      <y>320</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -260,8 +260,8 @@
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>40</y>
+      <x>690</x>
+      <y>50</y>
       <width>231</width>
       <height>91</height>
      </rect>
@@ -279,8 +279,8 @@
    <widget class="QTextEdit" name="textEdit_2">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>260</y>
+      <x>690</x>
+      <y>270</y>
       <width>231</width>
       <height>151</height>
      </rect>
@@ -299,9 +299,9 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>330</y>
-      <width>461</width>
-      <height>20</height>
+      <y>329</y>
+      <width>301</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -311,14 +311,14 @@
      </font>
     </property>
     <property name="text">
-     <string>Добавление фразы об отсутствии или недостаточности характеристик:</string>
+     <string>Добавление фразы о недостаточности характеристик:</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="textEdit_3">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>170</y>
+      <x>480</x>
+      <y>180</y>
       <width>441</width>
       <height>51</height>
      </rect>
@@ -337,8 +337,8 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>230</y>
-      <width>461</width>
+      <y>240</y>
+      <width>301</width>
       <height>20</height>
      </rect>
     </property>
@@ -355,8 +355,8 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>230</y>
+      <x>480</x>
+      <y>240</y>
       <width>191</width>
       <height>20</height>
      </rect>
@@ -374,8 +374,8 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>140</y>
+      <x>480</x>
+      <y>150</y>
       <width>441</width>
       <height>20</height>
      </rect>
@@ -393,8 +393,8 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>230</y>
+      <x>690</x>
+      <y>240</y>
       <width>191</width>
       <height>20</height>
      </rect>
@@ -412,8 +412,8 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>10</y>
+      <x>690</x>
+      <y>20</y>
       <width>191</width>
       <height>20</height>
      </rect>
@@ -432,8 +432,8 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>80</y>
-      <width>461</width>
+      <y>90</y>
+      <width>301</width>
       <height>141</height>
      </rect>
     </property>
@@ -446,6 +446,37 @@
     <property name="readOnly">
      <bool>true</bool>
     </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>440</y>
+      <width>461</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>461</width>
+      <height>0</height>
+     </size>
+    </property>
+    <column>
+     <property name="text">
+      <string>Наименование</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Еденица измерения</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Количество</string>
+     </property>
+    </column>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

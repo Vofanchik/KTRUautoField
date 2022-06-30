@@ -1,8 +1,7 @@
-from PyQt5 import QtWidgets, QtGui
-from PyQt5.QtWidgets import QMessageBox
-
+from PyQt5.QtWidgets import QMessageBox, QTableWidgetItem
+from PyQt5 import QtGui, QtWidgets
 from inface import Ui_MainWindow
-import sys
+
 import EISparse
 import DocxFiller
 import os
@@ -20,6 +19,7 @@ def resource_path(relative_path):
 class mywindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(mywindow, self).__init__()
+        self.item_count = 0
         self.r = EISparse.ParseKTRU()
         self.d = DocxFiller.DocxForm()
         self.ui = Ui_MainWindow()
@@ -30,10 +30,15 @@ class mywindow(QtWidgets.QMainWindow):
         self.ui.pushButton_3.clicked.connect(self.save_docx)
         self.ui.comboBox_3.activated[str].connect(self.onChanged_combobox3)
         self.ui.comboBox_2.activated[str].connect(self.onChanged_combobox2)
+
+        self.ui.tableWidget.resizeColumnsToContents()
+
     def search_ktru(self):
         self.ktru = self.ui.lineEdit.text()
 
         try:
+            self.ui.comboBox_3.clear()
+            self.ui.comboBox_2.clear()
             self.id_ktru = self.r.get_response(self.ktru)
             self.info = self.r.get_common_info(self.id_ktru)
             self.ui.textEdit_4.setPlainText(self.info['name'])
@@ -62,6 +67,11 @@ class mywindow(QtWidgets.QMainWindow):
             lack_of_description = self.ui.comboBox.currentIndex()
             self.d.common_fill(self.info['name'], self.ui.comboBox_2.currentText(), self.ktru, self.ui.comboBox_3.currentText(), self.info['measure'], quantity)
             self.d.tz_fill(self.info['name'], self.ui.textEdit_2.toPlainText(), lack_of_description,  **self.tz)
+            self.ui.tableWidget.setRowCount(self.item_count+1)
+            self.ui.tableWidget.setItem(self.item_count, 0, QTableWidgetItem(f"{self.info['name']}"))
+            self.ui.tableWidget.setItem(self.item_count, 1, QTableWidgetItem(f"{self.info['measure']}"))
+            self.ui.tableWidget.setItem(self.item_count, 2, QTableWidgetItem(f"{quantity}"))
+            self.item_count+=1
             QMessageBox.information(self, "Готово",
                                     f"Добавлена позиция {self.info['name']} в количестве {quantity} едениц измерения - {self.info['measure']}",
                                     QMessageBox.Ok)
