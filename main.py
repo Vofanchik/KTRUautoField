@@ -5,6 +5,16 @@ from inface import Ui_MainWindow
 import sys
 import EISparse
 import DocxFiller
+import os
+import sys
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    if getattr(sys, 'frozen', False):
+        base_path = sys._MEIPASS
+    else:
+        base_path = os.getcwd()
+    return os.path.join(base_path, relative_path)
 
 
 class mywindow(QtWidgets.QMainWindow):
@@ -13,7 +23,7 @@ class mywindow(QtWidgets.QMainWindow):
         self.r = EISparse.ParseKTRU()
         self.d = DocxFiller.DocxForm()
         self.ui = Ui_MainWindow()
-        self.setWindowIcon(QtGui.QIcon('icon.ico'))
+        self.setWindowIcon(QtGui.QIcon(resource_path('icon.ico')))
         self.ui.setupUi(self)
         self.ui.pushButton.clicked.connect(self.search_ktru)
         self.ui.pushButton_2.clicked.connect(self.add_position)
