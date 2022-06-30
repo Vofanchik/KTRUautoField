@@ -33,6 +33,11 @@ class mywindow(QtWidgets.QMainWindow):
 
         self.ui.tableWidget.resizeColumnsToContents()
 
+        self.fnt = self.ui.tableWidget.font()
+        self.fnt.setPointSize(8)
+        self.fnt.setUnderline(False)
+        self.ui.tableWidget.setFont(self.fnt)
+
     def search_ktru(self):
         self.ktru = self.ui.lineEdit.text()
 
@@ -43,6 +48,15 @@ class mywindow(QtWidgets.QMainWindow):
             self.info = self.r.get_common_info(self.id_ktru)
             self.ui.textEdit_4.setPlainText(self.info['name'])
             self.ui.lineEdit_3.setText(self.info['measure'])
+
+            self.ui.pushButton_4.setStyleSheet('background: rgb(255,255,255);')
+            self.ui.pushButton_5.setStyleSheet('background: rgb(255,255,255);')
+
+            if len(list(self.info['nkmi'].items()))>1:
+                self.ui.pushButton_4.setStyleSheet('background: rgb(255,0,0);')
+
+            if len(list(self.info['okpd'].items()))>1:
+                self.ui.pushButton_5.setStyleSheet('background: rgb(255,0,0);')
 
             for i in list(self.info['nkmi'].items()):
                 self.ui.comboBox_3.addItem(i[0])
@@ -55,19 +69,25 @@ class mywindow(QtWidgets.QMainWindow):
             self.ui.textEdit_3.setPlainText(self.info['nkmi'][f'{self.ui.comboBox_3.currentText()}'][0])
             QMessageBox.information(self, "Готово",
                                  "Поиск завершен, теперь уточните подходящий ОКПД, НКМИ и количество", QMessageBox.Ok)
+
+            self.tz = self.r.get_tz_ktru(self.id_ktru)
+            if self.tz == None:
+                self.tz = {}
+            else:
+                QMessageBox.information(self, "Характеристики",
+                                        f"В ТЗ присутствуют харакетристики, обратите внимание на фразу о их недостаточности",
+                                        QMessageBox.Ok)
         except:
             QMessageBox.critical(self, "Ошибка поиска", "Введите корректную позицию ктру или проверьте интернет соединение", QMessageBox.Ok)
 
     def add_position(self):
         try:
-            self.tz = self.r.get_tz_ktru(self.id_ktru)
-            if self.tz == None:
-                self.tz = {}
             quantity = self.ui.lineEdit_4.text()
             lack_of_description = self.ui.comboBox.currentIndex()
             self.d.common_fill(self.info['name'], self.ui.comboBox_2.currentText(), self.ktru, self.ui.comboBox_3.currentText(), self.info['measure'], quantity)
             self.d.tz_fill(self.info['name'], self.ui.textEdit_2.toPlainText(), lack_of_description,  **self.tz)
             self.ui.tableWidget.setRowCount(self.item_count+1)
+
             self.ui.tableWidget.setItem(self.item_count, 0, QTableWidgetItem(f"{self.info['name']}"))
             self.ui.tableWidget.setItem(self.item_count, 1, QTableWidgetItem(f"{self.info['measure']}"))
             self.ui.tableWidget.setItem(self.item_count, 2, QTableWidgetItem(f"{quantity}"))

@@ -110,15 +110,23 @@ class ParseKTRU:
                 count+=1
 
             return tz_content
+
+
         except:
             return None
 
+    def check_many_of_characteristics(self, **tz):
+        for i in tz.keys():
+            if len(i)>1:
+                return True
+        return False
 
 
 # r = ParseKTRU()
 # id_ktru = r.get_response('32.50.13.190-00007060')
-# # id_ktru = r.get_response('32.50.13.190-00007224')
-# # # # id_ktru = r.get_response('32.50.30.110-00000142')
+# id_ktru = r.get_response('32.50.13.190-00007224')
+# id_ktru = r.get_response('32.50.30.110-00000142')
 # # #
 # # #
-# pprint(r.get_common_info(id_ktru))
+# tz = r.get_tz_ktru(id_ktru)
+# print(r.check_many_of_characteristics(**tz))
