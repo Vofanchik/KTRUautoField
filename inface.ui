@@ -20,522 +20,380 @@
    <string>Создать ТЗ на Медицинское изделие</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>461</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Times New Roman</family>
-      <pointsize>14</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>Введите искомую позицию КТРУ здесь</string>
-    </property>
-    <property name="echoMode">
-     <enum>QLineEdit::Normal</enum>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>90</y>
-      <width>141</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>Искать</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>270</y>
-      <width>141</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>Добавить</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>370</y>
-      <width>141</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>Сохранить</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>270</y>
-      <width>301</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-      <underline>false</underline>
-     </font>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_4">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>270</y>
-      <width>101</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Times New Roman</family>
-      <pointsize>14</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-    <property name="echoMode">
-     <enum>QLineEdit::Normal</enum>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>370</y>
-      <width>301</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-      <underline>false</underline>
-     </font>
-    </property>
-    <item>
-     <property name="text">
-      <string>Не добавлять</string>
-     </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="5" rowspan="2">
+     <widget class="QTextEdit" name="textEdit">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
-    <item>
-     <property name="text">
-      <string>Нет характеристик</string>
-     </property>
+    <item row="9" column="0" colspan="2">
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="minimumSize">
+       <size>
+        <width>461</width>
+        <height>0</height>
+       </size>
+      </property>
+      <column>
+       <property name="text">
+        <string>Наименование</string>
+       </property>
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>8</pointsize>
+         <underline>false</underline>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Еденица измерения</string>
+       </property>
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>8</pointsize>
+         <underline>false</underline>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Количество</string>
+       </property>
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+      </column>
+     </widget>
     </item>
-    <item>
-     <property name="text">
-      <string>Недостатосно характеристик</string>
-     </property>
+    <item row="4" column="2" colspan="4">
+     <widget class="QTextEdit" name="textEdit_3">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
-   </widget>
-   <widget class="QComboBox" name="comboBox_2">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>90</y>
-      <width>191</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-      <underline>false</underline>
-     </font>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox_3">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>370</y>
-      <width>191</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-      <underline>false</underline>
-     </font>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>30</y>
-      <width>81</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>ОКПД:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>320</y>
-      <width>81</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>НКМИ:</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>50</y>
-      <width>231</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>270</y>
-      <width>231</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>330</y>
-      <width>331</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>Добавление фразы о недостаточности характеристик:</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit_3">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>180</y>
-      <width>441</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>240</y>
-      <width>301</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>Еденица измерения:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>240</y>
-      <width>191</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>Количество:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>150</y>
-      <width>441</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>Наименование по НКМИ:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>240</y>
-      <width>191</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>Описание по НКМИ:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>20</y>
-      <width>191</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="text">
-     <string>Наименование позиции ОКПД:</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit_4">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>90</y>
-      <width>301</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>8</pointsize>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="tableWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>440</y>
-      <width>461</width>
-      <height>192</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>461</width>
-      <height>0</height>
-     </size>
-    </property>
-    <column>
-     <property name="text">
-      <string>Наименование</string>
-     </property>
-     <property name="font">
-      <font>
-       <family>Times New Roman</family>
-       <pointsize>8</pointsize>
-       <underline>false</underline>
-      </font>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Еденица измерения</string>
-     </property>
-     <property name="font">
-      <font>
-       <family>Times New Roman</family>
-       <pointsize>8</pointsize>
-       <underline>false</underline>
-      </font>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Количество</string>
-     </property>
-     <property name="font">
-      <font>
-       <family>Times New Roman</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
-    </column>
-   </widget>
-   <widget class="QPushButton" name="pushButton_4">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>40</y>
-      <width>21</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background: rgb(255,255,255);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>330</y>
-      <width>21</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background: rgb(255,255,255);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
+    <item row="6" column="0">
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>Добавить</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="lineEdit_3">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="2">
+     <widget class="QLineEdit" name="lineEdit_4">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>14</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Normal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1" rowspan="3">
+     <widget class="QTextEdit" name="textEdit_4">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2" colspan="4">
+     <widget class="QLabel" name="label_6">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>Наименование по НКМИ:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2" colspan="3">
+     <widget class="QComboBox" name="comboBox_2">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="5" rowspan="3">
+     <widget class="QTextEdit" name="textEdit_2">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="2">
+     <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>НКМИ:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="5">
+     <widget class="QLabel" name="label_7">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>Описание по НКМИ:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>Сохранить</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0" colspan="2">
+     <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>Добавление фразы о недостаточности характеристик:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5">
+     <widget class="QLabel" name="label_8">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>Наименование позиции ОКПД:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLabel" name="label_4">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>Еденица измерения:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2" rowspan="2">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>ОКПД:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" rowspan="2" colspan="2">
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>14</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>Введите искомую позицию КТРУ здесь</string>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Normal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="2" colspan="3">
+     <widget class="QComboBox" name="comboBox_3">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2" colspan="3">
+     <widget class="QLabel" name="label_5">
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>Количество:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="4">
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: rgb(255,255,255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QComboBox" name="comboBox">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
+       </font>
+      </property>
+      <item>
+       <property name="text">
+        <string>Не добавлять</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Нет характеристик</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Недостатосно характеристик</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="pushButton">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>Искать</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="4">
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: rgb(255,255,255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
